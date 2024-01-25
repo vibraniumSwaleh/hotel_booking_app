@@ -1,5 +1,7 @@
 # Hotel Booking Application
 
+![Hotel Booking Main page](/client/public/Booking_App.png)
+
 An Airbnb clone application built with the MERN (MongoDB, Express.js, React, Node.js) stack, using Vite for the frontend. It's an Airbnb clone with all it's functionality.
 
 ## Table of Contents
