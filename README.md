@@ -2,7 +2,7 @@
 
 ![Hotel Booking Main page](/client/public/Booking_App.png)
 
-An Airbnb clone application built with the MERN (MongoDB, Express.js, React, Node.js) stack, using Vite for the frontend. It's an Airbnb clone with all it's functionality.
+A hotel booking application built with the MERN (MongoDB, Express.js, React, Node.js) stack, using Vite for the frontend. It's an Airbnb clone with all it's functionality.
 
 ## Table of Contents
 
@@ -16,14 +16,14 @@ An Airbnb clone application built with the MERN (MongoDB, Express.js, React, Nod
 
 ## Introduction
 
-This project is a full-stack Airbnb clone developed with the MERN stack, featuring a modern and fast frontend built with Vite. The goal of this project is to provide a foundation for building real-world applications with a focus on scalability and performance.
+This project is a full-stack hotel booking application developed with the MERN stack, featuring a modern and fast frontend built with Vite. The goal of this project is to provide a foundation for building real-world applications with a focus on scalability and performance.
 
 ## Features
 
 - **Full-Stack:** Utilizes the MERN stack for both frontend and backend.
 - **Vite for Frontend:** Fast and efficient development experience with Vite.
 - **Tailwind for Frontend:** Rapid and responsive UI development with Tailwind CSS.
-- **Airbnb Clone:** Includes essential features inspired by the Airbnb platform.
+- **Hotel Booking Application:** Includes essential features inspired by the Airbnb platform.
 - **Scalable and Modular:** Project structured for scalability and easy maintenance.
 
 * Create, read, update, and delete listings
@@ -46,13 +46,13 @@ Before you begin, ensure you have met the following requirements:
 1. **Clone the repository:**
 
     ```bash
-    git clone https://github.com/your-username/my-airbnb-clone.git
+    git clone https://github.com/vibraniumSwaleh/hotel_booking_app.git
     ```
 
 2. **Install dependencies:**
 
     ```bash
-    cd my-airbnb-clone/client
+    cd hotel_booking_app/client
     npm install
 
     cd ../server
