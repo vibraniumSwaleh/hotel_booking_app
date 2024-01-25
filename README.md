@@ -55,7 +55,7 @@ Before you begin, ensure you have met the following requirements:
     cd hotel_booking_app/client
     npm install
 
-    cd ../server
+    cd ../api
     npm install
     ```
 
@@ -65,14 +65,14 @@ Before you begin, ensure you have met the following requirements:
 
     ```env
     MONGODB_URI=your_mongodb_connection_string
-    PORT=5000
+    PORT=4000
     ```
 
 4. **Run the application:**
 
     ```bash
     # Start the backend
-    cd server
+    cd api
     npm start
 
     # Start the frontend
@@ -81,14 +81,14 @@ Before you begin, ensure you have met the following requirements:
     npm run dev
     ```
 
-5. Open your browser and navigate to [http://localhost:3000](http://localhost:3000) to view the app.
+5. Open your browser and navigate to [http://localhost:5173](http://localhost:5173) to view the app.
 
 ## Project Structure
 
 The project structure is organized as follows:
 
 - `client/`: Frontend (Vite)
-- `server/`: Backend (Express.js)
+- `api/`: Backend (Express.js)
 - `.gitignore`: Git ignore file
 - `README.md`: Project documentation
 - `package.json`: Project metadata and dependencies
