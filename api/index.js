@@ -1,6 +1,5 @@
 import express from "express";
 import cors from "cors";
-import bodyParser from "body-parser";
 
 const app = express();
 const PORT = 4000;
@@ -10,7 +9,7 @@ app.use(cors({
     credentials: true
 }));
 app.options('*', cors());
-app.use(bodyParser.json());
+app.use(express.json());
 
 app.get("/test", (req, res) =>
 {
@@ -22,7 +21,6 @@ app.post("/register", (req, res) =>
 {
     const { name, email, password } = req.body;
     res.json({ name, email, password });
-
     console.log({ name, email, password });
 });
 

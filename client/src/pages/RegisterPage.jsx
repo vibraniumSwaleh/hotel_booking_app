@@ -9,9 +9,9 @@ export default function RegisterPage() {
 
 function registerUser(e) {
      axios.post("/register", {
-      name: name,
-      email: email,
-      password: password,
+      name,
+      email,
+      password,
     });
     e.preventDefault();
   }
