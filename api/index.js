@@ -1,10 +1,13 @@
 import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
+import bcrypt from "bcryptjs";
 import "dotenv/config";
+import UserModel from "./models/User.js";
 
 const app = express();
 const PORT = 4000;
+const bcryptSalt = bcrypt.genSaltSync(12);
 
 app.use(express.json());
 app.use(cors({
@@ -21,11 +24,17 @@ app.get("/test", (req, res) =>
     console.log("Server '/test' endpoint");
 });
 
-app.post("/register", (req, res) =>
+app.post("/register", async (req, res) =>
 {
     const { name, email, password } = req.body;
-    res.json({ name, email, password });
-    console.log({ name, email, password });
+    const userDoc = await UserModel.create({
+        name,
+        email,
+        password: bcrypt.hashSync(password, bcryptSalt)
+    });
+
+    res.json(userDoc);
+    console.log(userDoc);
 });
 
 app.listen(PORT, () => {
