@@ -16,13 +16,12 @@ export default function RegisterPage() {
         password,
       });
       alert(
-        "Registration successful. \n Now you can log in: " + reply.data.name
+        "Registration successful. \nNow you can log in: " + reply.data.name
       );
     } catch (error) {
       if (error.response) {
         const statusCode = error.response.status;
-        const errorMessage =
-          error.response.data.message || "Unknown error occurred.";
+        const errorMessage = error.response.data || "Unknown error occurred.";
         alert(
           `Registration failed. \nStatus Code: ${statusCode}. \nError Message: ${errorMessage}. \nPlease try again.`
         );

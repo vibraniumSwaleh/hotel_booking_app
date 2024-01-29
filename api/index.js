@@ -35,9 +35,19 @@ app.post("/register", async (req, res) => {
       password: bcrypt.hashSync(password, bcryptSalt),
     });
     res.json(userDoc);
-    //console.log(userDoc);
+    console.log(userDoc);
   } catch (error) {
     res.status(422).json(error);
+  }
+});
+
+app.post("/login", async (req, res) => {
+  const { email, password } = req.body;
+  const userDoc = await UserModel.findOne({ email });
+  if (userDoc) {
+    res.json(userDoc);
+  } else {
+    res.status(423).json("User not found");
   }
 });
 
