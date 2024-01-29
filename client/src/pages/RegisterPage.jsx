@@ -9,12 +9,27 @@ export default function RegisterPage() {
 
   async function registerUser(e) {
     e.preventDefault();
-    await axios.post("/register", {
-      name,
-      email,
-      password,
-    });
-    alert("Registration successful. Now you can log in");
+    try {
+      const reply = await axios.post("/register", {
+        name,
+        email,
+        password,
+      });
+      alert(
+        "Registration successful. \n Now you can log in: " + reply.data.name
+      );
+    } catch (error) {
+      if (error.response) {
+        const statusCode = error.response.status;
+        const errorMessage =
+          error.response.data.message || "Unknown error occurred.";
+        alert(
+          `Registration failed. \nStatus Code: ${statusCode}. \nError Message: ${errorMessage}. \nPlease try again.`
+        );
+      } else {
+        alert("Error making request. \n Please try again.");
+      }
+    }
   }
 
   return (
