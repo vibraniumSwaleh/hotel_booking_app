@@ -4,13 +4,16 @@ import mongoose from "mongoose";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import UserModel from "./models/User.js";
+import cookieParser from "cookie-parser";
 import "dotenv/config";
 
 const app = express();
 const PORT = 4000;
 const bcryptSalt = bcrypt.genSaltSync(12);
 
+
 app.use(express.json());
+app.use(cookieParser());
 app.use(
   cors({
     origin: "http://localhost:5173",
@@ -65,6 +68,12 @@ app.post("/login", async (req, res) => {
   } else {
     res.status(404).json("User not found");
   }
+});
+
+app.get("/profile", (req, res) =>
+{
+  const {token} = req.cookies;
+  res.json({token});
 });
 
 app.listen(PORT, () => {
