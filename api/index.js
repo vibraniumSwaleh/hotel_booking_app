@@ -11,7 +11,6 @@ const app = express();
 const PORT = 4000;
 const bcryptSalt = bcrypt.genSaltSync(12);
 
-
 app.use(express.json());
 app.use(cookieParser());
 app.use(
@@ -52,7 +51,10 @@ app.post("/login", async (req, res) => {
     const passOk = bcrypt.compareSync(password, userDoc.password);
     if (passOk) {
       jwt.sign(
-        { email: userDoc.email, id: userDoc._id },
+        {
+          email: userDoc.email,
+          id: userDoc._id,
+        },
         process.env.jwtSecret,
         {},
         (err, token) => {
@@ -70,10 +72,17 @@ app.post("/login", async (req, res) => {
   }
 });
 
-app.get("/profile", (req, res) =>
-{
-  const {token} = req.cookies;
-  res.json({token});
+app.get("/profile", (req, res) => {
+  const { token } = req.cookies;
+  if (token) {
+    jwt.verify(token, process.env.jwtSecret, {}, async (err, tokenUser) => {
+      if (err) throw err;
+      const { name, email, _id } = await UserModel.findById(tokenUser.id);
+      res.json({name, email, _id});
+    });
+  } else {
+    res.json(null);
+  }
 });
 
 app.listen(PORT, () => {
