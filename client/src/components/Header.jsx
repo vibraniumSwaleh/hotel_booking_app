@@ -4,6 +4,8 @@ import { UserContext } from "../UserContext";
 
 export default function Header() {
   const { user } = useContext(UserContext);
+  // console.log("User from Header:");
+  // console.log(user);
   
   return (
     <div>

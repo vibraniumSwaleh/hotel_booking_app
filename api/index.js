@@ -85,6 +85,11 @@ app.get("/profile", (req, res) => {
   }
 });
 
+app.post("/logout", (req, res) =>
+{
+  res.clearCookie("token").json(true);
+});
+
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
 });

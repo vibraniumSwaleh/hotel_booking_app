@@ -18,6 +18,8 @@ export default function LoginPage() {
       });
       setUser(data);
       alert("Login successful");
+      // console.log("User data from Log in Page :");
+      // console.log(data);
       setRedirect(true);
     } catch (error) {
       if (error.response) {
