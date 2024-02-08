@@ -1,7 +1,19 @@
+import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
 export default function PlacesPage() {
   const { action } = useParams();
+  const [title, setTitle] = useState("");
+  const [address, setAddress] = useState("");
+  const [addedPhoto, setAddedPhoto] = useState([]);
+  const [photoLink, setPhotoLink] = useState("");
+  const [description, setDescription] = useState("");
+  const [perks, setPerks] = useState([]);
+  const [extraInfo, setExtraInfo] = useState("");
+  const [checkIn, setCheckIn] = useState("");
+  const [checkOut, setCheckOut] = useState("");
+  const [maxGuests, setMaxGuests] = useState(1);
+
 
   return (
     <div>
@@ -50,7 +62,7 @@ export default function PlacesPage() {
                 Add&nbsp;photo
               </button>
             </div>
-            <div className="mt-2 grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+            <div className="mt-2 -mb-1 grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
               <button className="flex justify-center gap-1 bg-transparent border rounded-2xl p-8 text-2xl text-gray-600">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -76,7 +88,7 @@ export default function PlacesPage() {
             <p className="text-gray-500 text-sm">
               Select all the perks for your place.
             </p>
-            <div className="grid gap-2 mt-2 grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
+            <div className="grid gap-2 mt-2 -mb-1 grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
               <label className="border p-4 flex rounded-2xl gap-2 items-center cursor-pointer">
                 <input className="cursor-pointer" type="checkbox" />
                 <svg
@@ -189,8 +201,28 @@ export default function PlacesPage() {
             <h2 className="text-2xl mt-4">Extra information</h2>
             <p className="text-gray-500 text-sm">House rules, etc.</p>
             <textarea />
-            <h2 className="text-2xl mt-4">Extra information</h2>
-            <p className="text-gray-500 text-sm">House rules, etc.</p>
+            <h2 className="text-2xl mt-4">Check in & out times</h2>
+            <p className="text-gray-500 text-sm">
+              add check in and out times, remember to have some time window for
+              cleaning the room between guests
+            </p>
+            <div className="grid gap-2 sm:grid-cols-3">
+              <div>
+                <h3 className="mt-2 -mb-1">Check in time</h3>
+                <input type="text" placeholder="14:00" />
+              </div>
+              <div>
+                <h3 className="mt-2 -mb-1">Check out time</h3>
+                <input type="text" placeholder="" />
+              </div>
+              <div>
+                <h3 className="mt-2 -mb-1">Max number of guests</h3>
+                <input type="text" placeholder="" />
+              </div>
+            </div>
+            <div >
+              <button className="primary my-4">Save</button>
+            </div>
           </form>
         </div>
       )}
