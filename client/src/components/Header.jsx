@@ -52,7 +52,6 @@ export default function Header() {
         </div>
         <Link
           to={user ? "/account" : "/login"}
-          // to={"/login"}
           className="item-center flex gap-2 border border-gray-300 rounded-full py-2 px-4 shadow-md shadow-gray-300"
         >
           <div className="flex items-center">
