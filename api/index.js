@@ -5,6 +5,9 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import UserModel from "./models/User.js";
 import cookieParser from "cookie-parser";
+import imageDLr from "image-downloader";
+import { fileURLToPath } from "url";
+import { dirname } from "path";
 import "dotenv/config";
 
 const app = express();
@@ -78,15 +81,26 @@ app.get("/profile", (req, res) => {
     jwt.verify(token, process.env.jwtSecret, {}, async (err, tokenUser) => {
       if (err) throw err;
       const { name, email, _id } = await UserModel.findById(tokenUser.id);
-      res.json({name, email, _id});
+      res.json({ name, email, _id });
     });
   } else {
     res.json(null);
   }
 });
 
-app.post("/logout", (req, res) =>
-{
+app.post("/post-by-link", async (req, res) => {
+  const { link } = req.body;
+  const imageName = Date.now() + ".jpg";
+  const currentDir = dirname(fileURLToPath(import.meta.url));
+  await imageDLr.image({
+    url: link,
+    dest: currentDir + "/uploads/" + imageName,
+  });
+  res.json(currentDir + "/uploads/" + imageName);
+  console.log("Image downloaded");
+});
+
+app.post("/logout", (req, res) => {
   res.clearCookie("token").json(true);
 });
 

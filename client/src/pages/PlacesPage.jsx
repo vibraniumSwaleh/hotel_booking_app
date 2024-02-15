@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import Perks from "../components/Perks";
+import axios from "axios";
 
 export default function PlacesPage() {
   const { action } = useParams();
@@ -17,11 +18,11 @@ export default function PlacesPage() {
 
   function inputHeader(text) {
     return <h2 className="text-2xl mt-4">{text}</h2>;
-  }
+  };
 
   function inputDescription(text) {
     return <p className="text-gray-500 text-sm">{text}</p>;
-  }
+  };
 
   function preInput(header, description) {
     return (
@@ -30,7 +31,16 @@ export default function PlacesPage() {
         {inputDescription(description)}
       </>
     );
-  }
+  };
+
+  async function addPhotoByLink(e)
+  {
+    console.log("Front end:" + photoLink);
+    e.preventDefault();
+    await axios.post("/post-by-link", 
+      { link: photoLink }
+    );
+  };
 
   return (
     <div>
@@ -84,7 +94,7 @@ export default function PlacesPage() {
                 value={photoLink}
                 onChange={(e) => setPhotoLink(e.target.value)}
               />
-              <button className="bg-gray-200 px-4 rounded-2xl">
+              <button className="bg-gray-200 px-4 rounded-2xl" onClick={addPhotoByLink}>
                 Add&nbsp;photo
               </button>
             </div>
